@@ -1,4 +1,4 @@
-# Match Predictor
+# ⚽ Match Predictor
 
 This project predicts outcomes of English Premier League matches. A neural network model is trained on historical results and exposed through a Flask API. An Angular web interface consumes the API to display win probabilities and expected goals for a selected home and away team.
 
