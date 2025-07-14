@@ -1,0 +1,272 @@
+.body {
+    background: linear-gradient(360deg, #DFBAFF, #ffffff);
+    min-height: 100vh;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-direction: column;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: absolute;
+    top: 10%;
+}
+
+.logo {
+    width: 500px;
+    max-width: 90vw;
+    height: auto;
+    display: block;
+}
+
+.title {
+    font-size: 50px;
+    font-weight: 700;
+    color: #3D195B;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.team-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6vw;
+    position: relative;
+    margin-top: 470px;
+}
+
+.team-box {
+    width: 400px;
+    height: 400px;
+    background-color: white;
+    border: 2px solid #D9D9D9;
+    border-radius: 15px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.team-logo-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.team-logo {
+    width: auto;
+    max-width: 60%;
+    max-height: 60%;
+    object-fit: contain;
+}
+
+.team-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #3D195B;
+    color: white;
+    padding: 10px 15px;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 500;
+    width: 45%;
+    text-align: center;
+    z-index: 2;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.team-label.expanded {
+    transform: scale(1.1);
+    background-color: rgb(147, 91, 179);
+}
+
+.dropdown-wrapper {
+    position: relative;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+    opacity: 0;
+}
+
+.dropdown-wrapper.open {
+    max-height: 200px;
+    opacity: 1;
+}
+
+.vs {
+    font-size: 40px;
+    font-weight: 700;
+    color: #3D195B;
+}
+
+ng-select.custom-dropdown .ng-dropdown-panel {
+    background-color: #DFBAFF;
+    color: #3D195B;
+    border-radius: 10px;
+    border: 1px solid #3D195B;
+}
+
+ng-select.custom-dropdown .ng-dropdown-panel .ng-option {
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
+ng-select.custom-dropdown .ng-dropdown-panel .ng-option:hover {
+    background-color: #3D195B;
+    color: white;
+}
+
+.spinner {
+    border: 8px solid #ffffff;
+    border-top: 8px solid #3D195B;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    animation: spin 1s linear infinite;
+    margin: auto;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.custom-dropdown .ng-dropdown-panel {
+    position: absolute;
+    z-index: 1000;
+    background-color: #DFBAFF;
+    color: #3D195B;
+    border-radius: 10px;
+    border: 1px solid #3D195B;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: visible;
+}
+
+.custom-dropdown .ng-dropdown-panel .ng-option {
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
+.custom-dropdown .ng-dropdown-panel .ng-option:hover {
+    background-color: #3D195B;
+    color: white;
+}
+
+.prediction-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    width: 100%;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.win-percentage-bar, .expected-goals-bar {
+    width: 1100px;
+    height: 80px;
+    background: white;
+    border: 2px solid #D9D9D9;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+@media (min-width: 1400px) {
+    .win-percentage-bar, .expected-goals-bar {
+        width: 1150px;
+    }
+}
+
+.win-percentage-bar {
+    border-radius: 10px;
+    transition: background 0.3s ease-in-out;
+}
+
+.win-percentage-label, .expected-goals-label {
+    position: absolute;
+    top: -25px;
+    background-color: #3D195B;
+    color: white;
+    padding: 5px 20px;
+    font-size: 15px;
+    font-weight: 400;
+    width: 250px;
+    text-align: center;
+    border-radius: 0;
+}
+
+.win-percentage-values, .expected-goals-values {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    font-size: 24px;
+    font-weight: 700;
+    color: #3D195B;
+}
+
+.home-percentage, .away-percentage {
+    font-size: 24px;
+    font-weight: 700;
+    transition: color 0.3s ease-in-out;
+}
+
+.home-goals, .away-goals {
+    color: #3D195B;
+}
+
+/* Loading Overlay for Win Percentage and Expected Goals */
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.7); /* Slight transparent white */
+    backdrop-filter: blur(5px); /* Slight blur effect */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+    pointer-events: none; /* Prevents interaction */
+}
+
+.loading-overlay.show {
+    opacity: 1; /* Show when loading */
+}

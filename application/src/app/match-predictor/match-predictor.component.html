@@ -1,0 +1,77 @@
+<div class="body">
+    <div class="header">
+        <img src="/assets/premier_league.png" alt="Premier League Logo" class="logo">
+        <h1 class="title">Predictor</h1>
+    </div>
+
+    <div class="team-container">
+        <div class="team-wrapper">
+            <div class="team-box home">
+                <div class="team-logo-container">
+                    <div *ngIf="loadingHome" class="spinner"></div>
+                    <img *ngIf="!loadingHome" [src]="selectedHomeTeam ? getTeamImage(selectedHomeTeam.name) : ''"
+                        [alt]="selectedHomeTeam ? selectedHomeTeam.name : ''" class="team-logo">
+                </div>
+                <div class="team-label" [class.expanded]="labelHovered === 'home'" (mouseenter)="onLabelHover('home')"
+                    (mouseleave)="onLabelLeave('home')" (click)="toggleDropdown('home')">
+                    Home
+                </div>
+            </div>
+            <div class="dropdown-wrapper" [class.open]="dropdownOpen === 'home'">
+                <ng-select [items]="filteredHomeTeams" bindLabel="name" [(ngModel)]="selectedHomeTeam"
+                    placeholder="Select Home Team" class="custom-dropdown" (change)="onTeamSelect('home')"
+                    appendTo="body">
+                </ng-select>
+            </div>
+        </div>
+    
+        <div class="vs">VS</div>
+    
+        <div class="team-wrapper">
+            <div class="team-box away">
+                <div class="team-logo-container">
+                    <div *ngIf="loadingAway" class="spinner"></div>
+                    <img *ngIf="!loadingAway" [src]="selectedAwayTeam ? getTeamImage(selectedAwayTeam.name) : ''"
+                        [alt]="selectedAwayTeam ? selectedAwayTeam.name : ''" class="team-logo">
+                </div>
+                <div class="team-label" [class.expanded]="labelHovered === 'away'" (mouseenter)="onLabelHover('away')"
+                    (mouseleave)="onLabelLeave('away')" (click)="toggleDropdown('away')">
+                    Away
+                </div>
+            </div>
+            <div class="dropdown-wrapper" [class.open]="dropdownOpen === 'away'">
+                <ng-select [items]="filteredAwayTeams" bindLabel="name" [(ngModel)]="selectedAwayTeam"
+                    placeholder="Select Away Team" class="custom-dropdown" (change)="onTeamSelect('away')"
+                    appendTo="body">
+                </ng-select>
+            </div>
+        </div>
+    </div>
+    
+    <div class="prediction-section">
+        <div class="win-percentage-bar" [style.background]="getGradient()">
+            <div class="loading-overlay" [class.show]="loadingPredictions"></div> 
+            <div class="win-percentage-label">Win Probability</div>
+            <div class="win-percentage-values">
+                <span class="home-percentage" [style.color]="getDynamicColor('home')">
+                    {{ homeWinPercentage }}%
+                </span>
+                <span class="draw-percentage" style="color: grey;">
+                    {{ drawPercentage }}%
+                </span>
+                <span class="away-percentage" [style.color]="getDynamicColor('away')">
+                    {{ awayWinPercentage }}%
+                </span>
+            </div>
+        </div>
+    
+        <div class="expected-goals-bar">
+            <div class="loading-overlay" [class.show]="loadingPredictions"></div> 
+            <div class="expected-goals-label">Expected Goals</div>
+            <div class="expected-goals-values">
+                <span class="home-goals">{{ homeExpectedGoals }}</span>
+                <span class="away-goals">{{ awayExpectedGoals }}</span>
+            </div>
+        </div>
+    </div>    
+</div>
